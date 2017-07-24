@@ -5,6 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.*;  
 import javax.servlet.annotation.*; 
 import connection.DB_connect;
+import javax.servlet.RequestDispatcher;
 @WebServlet("/delete")
 public class Delete extends HttpServlet
 {
@@ -20,13 +21,15 @@ PreparedStatement st=con.prepareStatement("delete from user_details where fname=
 st.setString(1,name1);
 int r=st.executeUpdate();
 response.sendRedirect("/show");
-
-
 }
 catch (Exception ex) 
 {
     System.out.println(ex);
 }  
-          
+ String a="vengat";
+request.setAttribute("name", a);
+RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
+rd.forward(request, response);
 }  
+
 }

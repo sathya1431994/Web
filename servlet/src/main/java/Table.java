@@ -16,13 +16,13 @@ public class Table extends HttpServlet
     PrintWriter pw=response.getWriter();
     response.setContentType("text/html");
    String name=request.getParameter("name");
-Statement st=con.createStatement();
-ResultSet r=st.executeQuery("select * from user_details");
+    Statement st=con.createStatement();
+    ResultSet r=st.executeQuery("select * from user_details");
         pw.println("<table border=3>");
         while(r.next())
         {
-          //  String url="<a href=edit?fname="+r.getString(1)+">Delete</a>"
-            pw.println("<tr><td>"+r.getString(1)+"</td><td>"+r.getString(2)+"</td><td>"+r.getString(3)+"</td><td>"+r.getString(4)+"</td><td>"+r.getString(5)+"</td><td>"+r.getString(6)+"</td><td>"+r.getString(7)+"</td><td>"+"<a href=delete?id="+r.getString(1)+">Delete</a>");
+            String url="<a href=edit?fname="+r.getString(1)+"&"+"lname="+r.getString(2)+"&"+"email="+r.getString(3)+"&"+"date="+r.getString(4)+"&"+"time="+r.getString(5)+"&"+"topic="+r.getString(6)+"&"+"location="+r.getString(7)+">Edit</a>";
+            pw.println("<tr><td>"+r.getString("fname")+"</td><td>"+r.getString("lname")+"</td><td>"+r.getString("email")+"</td><td>"+r.getString("date")+"</td><td>"+r.getString("time")+"</td><td>"+r.getString("topic")+"</td><td>"+r.getString("location")+"</td><td>"+"<a href=delete?id="+r.getString(1)+">Delete</a>"+"</td><td>"+url);
         }
         pw.println("</table>");
         pw.close();

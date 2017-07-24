@@ -1,6 +1,12 @@
  <html> 
- <head> 
-    </head>
+ <head>
+<script>
+function onload()
+{
+document.getElementById('if').src="http://localhost:9090/show";
+}
+</script>
+</head>
     <body>  
     <form  action="/show" method="GET" onsubmit="show" name="form">  
     FirstName:<input type="text" name="firstname"/><br/><br/>  
